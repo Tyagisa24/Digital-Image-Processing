@@ -1,0 +1,26 @@
+% Load the image
+original_image = imread('power_law_transformed_image.jpg');
+original_image=rgb2gray(original_image);
+figure(2)
+
+% Bitplane slicing (extract upper four bitplanes)
+bitplane_4 = bitget(original_image, 4);
+bitplane_5 = bitget(original_image, 5);
+bitplane_6 = bitget(original_image, 6);
+bitplane_7 = bitget(original_image, 7);
+
+% Reconstruct the image using upper four bitplanes
+reconstructed_image = uint8(bitplane_4 * 2^4 + bitplane_5 * 2^5 + bitplane_6 * 2^6 + bitplane_7 * 2^7);
+
+% Subtract the reconstructed image from the original image
+difference_image = original_image - reconstructed_image;
+
+
+% Apply histogram equalization to the difference image
+equalized_image = histeq(difference_image);
+
+% Display the original image, reconstructed image, and the result
+subplot(221), imshow(original_image), title('Original Image');
+subplot(222), imshow(reconstructed_image), title('Reconstructed Image');
+subplot(223), imshow(difference_image), title(' Difference Image');
+subplot(224), imshow(equalized_image), title('Equalized Difference Image');
