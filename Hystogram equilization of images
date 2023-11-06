@@ -1,0 +1,65 @@
+// Using different images of different contrast to show the hystogram plot of the images
+%%Image1
+img1=imread('download.jpg');
+gray1=rgb2gray(img1);
+figure
+imshow(gray1);
+title('Dark Image');
+figure
+imhist(gray1);
+title('Dark Image');
+
+J1= histeq(gray1);
+figure
+imshow(J1);
+title('Dark Image histogram equilization');
+
+
+%%Image2
+img2=imread('hys.jpg');
+gray2=rgb2gray(img2);
+figure
+imshow(gray2);
+title('High Contrast Image');
+
+figure
+imhist(gray2);
+title('High Contrast Image');
+
+J2= histeq(gray2);
+figure
+imshow(J2);
+title('High Contrast Image histogram equilization');
+
+%%Image3
+
+img3=imread('abc.jpg');
+gray3=rgb2gray(img3);
+figure
+imshow(gray3);
+title('low Contrast Image');
+
+figure
+imhist(gray3);
+title('Low Contrast Image');
+
+J3= histeq(gray3);
+figure
+imshow(J3);
+title('Low Contrast Image histogram equilization');
+
+%%Image4
+
+img4=imread('th.jpg');
+gray4=rgb2gray(img4);
+figure
+imshow(gray4);
+title('Bright Image');
+figure
+imhist(gray4);
+title('Bright Image');
+
+J4= histeq(gray4);
+figure
+imshow(J4);
+title('Bright Image histogram equilization');
