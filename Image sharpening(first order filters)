@@ -1,0 +1,21 @@
+im=imread('hys.jpg');
+gray= rgb2gray(im);
+subplot(2,2,1)
+imshow(im)
+title('Original')
+
+
+ed= edge(gray,'roberts')
+subplot(2,2,2)
+imshow(ed)
+title('Roberts')
+
+ed1= edge(gray,'sobel')
+subplot(2,2,3)
+imshow(ed1)
+title('Sobel')
+
+ed2= edge(gray,'prewitt')
+subplot(2,2,4)
+imshow(ed2)
+title('Prewitt')
